@@ -1,0 +1,3 @@
+Need to change any reference to isInt or roundTo to the Math. prefixed versions in textbox.
+
+We seem to have sorted all the structure out! Add something if you feel unsure about anything.

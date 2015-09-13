@@ -1,0 +1,56 @@
+02/08/2013
+> Fixed all the issues with the overworld engine (with ice and ledges).
+> Simplified the x_ and y_ changes when a key is pressed —  we didn't need to only change x_ if left or right were pressed, for example, because cosine is zero at those angles anyway.
+> Changed the system for different tiles quite a lot — it now uses a loop. This allows for complicated situations like multiple edges and multiple ice tiles in between them, etc. Unfortunately, it does make our raytracing functions pretty useless for now, but it'll come into use later on.
+> Added a jumpTo(x, y) function for Character, which is a short-cut for setting x, y, x_ and y_.
+> Made broken ice teleport the player — at the moment it just teleports the player to the top-right.
+> Started on the textbox system — got text displaying, but not wrapping or anything else.
+
+03/08/2013
+> Got text wrapping in the textbox.
+> Got multiple messages working in the textbox.
+> Made the textbox scroll to messages over the 2-line limit, before moving on to the next message.
+> Added a dictionary for different key values.
+> Integrated the movement and textbox systems into the engine.php file.
+> Made individual components work with or without each other.
+> Removed some ambiguous and buggy code that modified movement on different terrain types, fixing a bug with running over ledges in the process.
+> Added signs.
+
+04/08/2013
+> Created views.
+> Fixed the gradients being used for directional objects in the overworld.
+> Renamed the tileTypes.prominence to tileTypes.hustle and generalised it to be used for both ledges and ocean currents, through another map tile variable called "approachable", which can be set to "directions.congruous" (ledges) or "directions.any" (currents or spinners).
+> Modified the character movement code to allow for real-time tile checking as well as future-planning. Future-planning is used for straight lines in the player's direction, such as ice and ledges. However, when different directions are required, real-time checking is needed. The future-planning could scrapped for ice and ledges, but I'll leave it as it is for now.
+> Added a fillObjectArea() and fillObjectPath() function, which makes creating more complex maps a lot easier, especially when making current mazes and the like.
+> Added a current tile.
+> Added "directions.horizontal" and "directions.vertical".
+> Added a fillRelativePath() function, which makes paths take relative rather than absolute co-ordinates and that has a nicer argument syntax, making it much nicer to make paths with.
+
+08/08/2013
+> Added a drawGradient() function, which reduces a lot of similar code in objects' drawing events.
+> Allowed the player to walk into signs from below to read their text.
+> Added an optional direction argument to Character.canInteractWith(), which makes the method require that the player is facing a certain direction, for approaching objects from certain directions, for example.
+> Added a new parameter in the movement system that allows for "hurling", which continues to move the player in a direction until they are stopped by something, used for spinners.
+> Added spinner tiles.
+> Added the arrow keys as keyboard constants.
+> Added tileTypes.tenacious. This stops the player when they're standing on the tile, rather than when they try to walk over it, which is how tileTypes.trammel works.
+
+10/08/2013
+> Started work on the bag system. Got the basic structure and drawing working.
+
+05/09/2013
+> Made it possible to leave marsh tiles.
+> Made items selectable.
+
+06/09/2013
+> Refined item selection.
+> Added turning.
+
+09/09/2013
+> Improved the delay when turning
+> Fixed marsh tiles.
+> Added sand tiles.
+
+14/02/2014
+> Fixed sand tiles.
+> Fixed small bug with drawing.
