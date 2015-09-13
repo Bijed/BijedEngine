@@ -24,13 +24,13 @@ function textboxInitialise() {
     textboxCanvas.height = (textboxCanvas.fontHeight * textboxCanvas.lines) + ((textboxCanvas.lineHeight - textboxCanvas.fontHeight) * (textboxCanvas.lines - 1)) + (textboxCanvas.paddingY * 2);
     textboxCanvas.ctx = textboxCanvas.getContext("2d");
     
-    textbox = new Textbox();
+    textbox = new OverworldTextbox();
     textbox.draw(textboxCanvas.ctx);
     
     engine.addUpdater(function(element){ return (function() { element.update(element);  element.draw(); }); }(textbox));
 }
 
-function Textbox() {
+function OverworldTextbox() {
     this.messages = [];
     this.displayed = "";
     this.charactersDisplayed = 0;

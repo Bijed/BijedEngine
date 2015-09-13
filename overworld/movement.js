@@ -60,7 +60,7 @@ function movementInitialise() {
     movementCanvas.entities.push(player = new Character(0, 0));
     player.hasControl = true;
 
-    movementCanvas.entities.push(view = new View(movementCanvas.width, movementCanvas.height, player));
+    movementCanvas.entities.push(view = new OverworldView(movementCanvas.width, movementCanvas.height, player));
 
     movementCanvas.entities.push(new Water(2, 3, 3, 3));
     movementCanvas.entities.push(new Ice(1, 7, 7, 3));
@@ -87,7 +87,7 @@ function movementInitialise() {
     movementCanvas.update(movementCanvas);
 }
 
-function View(width, height, object) {
+function OverworldView(width, height, object) {
     this.x = 0;
     this.y = 0;
     this.width = width;
