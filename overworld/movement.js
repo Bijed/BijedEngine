@@ -75,6 +75,7 @@ function movementInitialise() {
     movementCanvas.entities.push(new Sign(2, 2, "Hello, I'm a sign!"));
     movementCanvas.entities.push(new Sign(0, 9, "^_^"));
     movementCanvas.entities.push(new Sign(0, 2, ["I have lots and lots of text that goes over multiple lines, so you can see the cool scrolling effect :D", "I also have multiple messages, which works just fine."]));
+	movementCanvas.entities.push(new Grass (1, 1))
 
     fillRelativeTilePath(function(x, y, direction) { return new Current(x, y, direction) }, 3, 1, directions.vertical, [1, 2, 4, -4], undefined, true);
 
@@ -413,6 +414,35 @@ function Ice(x, y, width, height) {
     this.draw = function(context) {
         context.fillStyle = "hsl(180, 100%, 80%)";
         context.fillRect((-view.x) + this.x * grid.cell.width, (-view.y) + this.y * grid.cell.height, this.width * grid.cell.width, this.height * grid.cell.height);
+    };
+}
+
+function Grass(x, y, width, height) {
+    this.x = x;
+    this.y = y;
+    this.z = 0;
+    this.width = width || 1;
+    this.height = height || 1;
+    this.states = [];
+    map.setTiles(this.x, this.y, this.width, this.height, tileTypes.brush);
+    this.update = function() {
+        if (player.x >= this.x && player.x < this.x + this.width && isInt(player.x) && player.y >= this.y && player.y < this.y + this.height && isInt(player.y) && (player.x !== player._x || player.y !== player._y)) {
+            /* Randomly initiate a battle */
+			if (chance(encounterRates.grass, encounterRates.base)) {
+				console.log("Battle should occur")
+				if (Battle === null) {
+					Battle = BattleContext(true);
+				}
+				Battle.beginWildBattle(Game.player, [new pokemon({ "species" : "Charizard (Nintendo)", "level" : 70 })], {style:"normal",flags:[],weather:"clear",scene:"Field Clearing",rules:{levels:"any",party:"up to: 6",items:"allowed"},tile:"grass"}, function (flags, trainers) {console.log("battle ended", flags, trainers);});
+			}	
+        }
+    };
+    this.draw = function(context) {
+        for (var cellY = 0; cellY < this.height; ++cellY)
+            for (var cellX = 0; cellX < this.width; ++cellX) {
+                context.fillStyle = "hsl(108, 100%, 19%)";
+                context.fillRect((-view.x) + (this.x + cellX) * grid.cell.width, (-view.y) + (this.y + cellY)  * grid.cell.height, grid.cell.width, grid.cell.height);
+            }
     };
 }
 

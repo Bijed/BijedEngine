@@ -19,6 +19,9 @@
         </style>
     </head>
     <body>
+		<script>
+			Battle = null;
+		</script>
         <div id="heading">Pokémon Engine</div>
         <canvas id="overworld"></canvas>
         <canvas id="textbox"></canvas>

@@ -31,7 +31,9 @@ versions = {
     black2 : ++i,
     white2 : ++i,
     x : ++i,
-    y : ++i
+    y : ++i,
+	omegaRuby : ++i,
+	alphaSapphire : ++i
 };
 
 types = {
@@ -255,15 +257,15 @@ movements = {
 
 tileTypes = {
     normal : i = 0, // A tile that does nothing
-    encounter : ++i, // A tile that causes a battle
-    doubleEncounter : ++i, // A tile that causes a double battle
+    brush : ++i, // A tile that causes a battle
+    geminateBrush : ++i, // A tile that causes a double battle
     water : ++i, // A water tile
     hustle : ++i, // A tile that moves the player in a particular direction (such as ledges or currents)
     verglas : ++i, // An ice tile
-    trammel : ++i, // An obstacle tile—affects (x_, y_)
+    trammel : ++i, // An obstacle tile — affects (x_, y_)
     cant : ++i, // A slope tile
     egress : ++i, // A portal, such as a door,
-    tenacious : ++i // An obstacle tile—affects (x, y)
+    tenacious : ++i // An obstacle tile — affects (x, y)
 };
 
 iceStates = {
@@ -271,5 +273,10 @@ iceStates = {
     cracked : ++i,
     broken : ++i
 };
+
+encounterRates = {
+	base : 187.5,
+	grass : 100
+}
 
 console.log("Constants loaded.");
