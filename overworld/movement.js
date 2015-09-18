@@ -97,8 +97,8 @@ function OverworldView(width, height, object) {
 
     this.update = function() {
         if (typeof this.follow !== "undefined") {
-            this.x = this.follow.x * grid.cell.width - this.width / 2;
-            this.y = this.follow.y * grid.cell.height - this.height / 2;
+            this.x = this.follow.x * grid.cell.width - this.width / 2 + grid.cell.width / 2;
+            this.y = this.follow.y * grid.cell.height - this.height / 2 + grid.cell.height / 2;
         }
     };
 }
